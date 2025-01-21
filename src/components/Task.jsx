@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { completeTask, removeTask } from '../state/counter/todoSlice';
 
 function Task({ name, completed, id }) {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="mt-5 flex items-center justify-between p-2">
@@ -11,22 +15,27 @@ function Task({ name, completed, id }) {
 justify-center rounded-md border border-gray-300 text-white/0 outline-none transition duration-[0.2s]
 checked:border-none checked:text-white hover:cursor-pointer  checked:bg-brand-500"
             name="weekly"
+            onClick={() => {
+              dispatch(completeTask(id));
+            }}
           />
           <p className="text-base font-bold text-navy-700 ">{name}</p>
         </div>
-        <div>
+        <div
+          className="cursor-pointer text-red-400"
+          onClick={() => {
+            dispatch(removeTask(id));
+          }}
+        >
           <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth={0}
-            viewBox="0 0 24 24"
-            className="h-6 w-6 text-navy-700 "
-            height="1em"
-            width="1em"
             xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-trash-fill"
+            viewBox="0 0 16 16"
           >
-            <path fill="none" d="M0 0h24v24H0V0z" />
-            <path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
           </svg>
         </div>
       </div>

@@ -19,11 +19,12 @@ const todoSlice = createSlice({
       state.taskCounter += 1;
     },
     removeTask: (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id != action.payload.id);
+      state.tasks = state.tasks.filter((task) => task.id != action.payload);
     },
     completeTask: (state, action) => {
       state.tasks.forEach((task) => {
-        if (task.id == action.payload.id) task.completed = true;
+        console.log('payload id:', action.payload);
+        if (task.id == action.payload) task.completed = !task.completed;
       });
     },
   },
