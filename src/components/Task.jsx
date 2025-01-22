@@ -1,6 +1,6 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { completeTask, removeTask } from '../state/counter/todoSlice';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { completeTask, removeTask } from "../state/todo/todoSlice";
 
 function Task({ name, completed, id }) {
   const dispatch = useDispatch();

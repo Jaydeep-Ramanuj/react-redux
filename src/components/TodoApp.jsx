@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import Task from './Task';
-import { addTask } from '../state/counter/todoSlice';
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import Task from "./Task";
+import { addTask } from "../state/todo/todoSlice";
+import { useState } from "react";
 
 function TodoApp() {
   // const todo = useSelector((state) => state.todo);
@@ -26,7 +26,7 @@ function TodoApp() {
           className="btn"
           onClick={() => {
             dispatch(addTask({ name: input, id: todo.taskCounter + 1 }));
-            setInput('');
+            setInput("");
           }}
         >
           Add task
